@@ -1,0 +1,273 @@
+:root {
+  --primary: #3f8f55;       /* calm green */
+  --primary-dark: #2c6e3f;
+  --dark: #0f172a;
+  --gray: #64748b;
+  --light: #f8fafc;
+  --radius: 12px;
+}
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+}
+
+.container {
+  width: min(1200px, 90%);
+  margin: auto;
+}
+
+/* ================= NAVBAR ================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo img {
+  height: 60px;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  position: relative;  /* required for underline */
+  color: var(--gray);
+  text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+/* Underline effect */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-dark);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a.active {
+  color: var(--primary-dark);
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Right controls */
+.right-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hamburger {
+  font-size: 1.8rem;
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================= HERO ================= */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8rem 1rem;
+  background: linear-gradient(135deg, #56ab2f, #a8e063); /* smooth green gradient */
+  color: white;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 1.2rem auto;
+  color: #e4e4e7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.85rem 1.7rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.primary {
+  background: white;
+  color: var(--primary);
+}
+
+.primary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.secondary:hover {
+  background: white;
+  color: var(--primary);
+}
+
+/* ================= SECTIONS ================= */
+.section {
+  padding: 5rem 0;
+  scroll-margin-top: 75px; /* sticky navbar offset */
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.section-text {
+  max-width: 750px;
+  margin: auto;
+  text-align: center;
+  color: var(--gray);
+}
+
+/* ================= GRID + CARDS ================= */
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 3rem;
+}
+
+.card,
+.price-card {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.card:hover,
+.price-card:hover {
+  transform: translateY(-5px);
+}
+
+/* PRICING */
+.featured {
+  border: 2px solid var(--primary);
+}
+
+/* ================= CONTACT ================= */
+.contact-form {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #d1d5db;
+  resize: none;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background: #111;
+  color: #d4d4d8;
+}
+
+/* ================= RESPONSIVE NAV ================= */
+@media (max-width: 880px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    width: 70%;
+    max-width: 260px;
+    padding: 1.5rem;
+    display: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}

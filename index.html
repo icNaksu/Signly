@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signly</title>
+  <link rel="icon" href="pics/S-removebg-preview.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="#home" class="logo">
+        <img src="pics/S-removebg-preview.png" alt="Signly Logo">
+      </a>
+
+      <nav class="nav-links" id="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="right-controls">
+        <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <h1>Build Stunning Digital Experiences</h1>
+      <p>We design and develop modern, fast, and accessible websites for all users.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn primary">Get Started</a>
+        <a href="#services" class="btn secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <p class="section-text">
+        Signly is an accessibility solution designed for Deaf and mute people to facilitate communication through sign language recognition and translation.
+         Our mission is to bridge the communication gap and promote inclusivity by leveraging cutting-edge technology.
+      </p>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="grid">
+        <div class="card"><h3>Android Application</h3><p>A mobile app version.</p></div>
+        <div class="card"><h3>Prototype</h3><p>The interactive prototype.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section">
+    <div class="container">
+      <h2 class="section-title">Pricing</h2>
+      <div class="grid pricing-grid">
+        <div class="price-card">…</div>
+        <div class="price-card featured">…</div>
+        <div class="price-card">…</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button class="btn primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2026 Signly — All rights reserved.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
