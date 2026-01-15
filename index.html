@@ -88,22 +88,50 @@
     </div>
   </section>
 
-  <!-- ================= PRICING ================= -->
+  <!-- ================= OUR TEAM (CAROUSEL) ================= -->
   <section id="ourteam" class="section">
     <div class="container">
       <h2 class="section-title">Our Team</h2>
-      <div class="grid pricing-grid">
-        <div class="price-card">
-          <h3>Basic</h3>
-          <p>Perfect for getting started</p>
+      
+      <div class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-track">
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+              <img src="car1.jpg" alt="Team Photo 1">
+              <div class="slide-caption">Our Amazing Team - 2024</div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <img src="car2.jpg" alt="Team Photo 2">
+              <div class="slide-caption">Development Squad</div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <img src="car3.jpg" alt="Team Photo 3">
+              <div class="slide-caption">Team Building Event</div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+              <img src="car4.jpg" alt="Team Photo 4">
+              <div class="slide-caption">Project Launch Day</div>
+            </div>
+          </div>
         </div>
-        <div class="price-card featured">
-          <h3>Pro</h3>
-          <p>Most popular choice</p>
-        </div>
-        <div class="price-card">
-          <h3>Enterprise</h3>
-          <p>For large organizations</p>
+        
+        <!-- Navigation Arrows -->
+        <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
+        <button class="carousel-btn next" aria-label="Next slide">›</button>
+        
+        <!-- Dot Indicators -->
+        <div class="carousel-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+          <span class="dot" data-slide="3"></span>
         </div>
       </div>
     </div>
@@ -131,4 +159,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
