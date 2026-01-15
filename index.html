@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signly</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="signly.png" type="image/png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <div class="container nav">
+      <a href="#home" class="logo">
+        <img src="signly.png" alt="Signly Logo">
+      </a>
+
+      <nav class="nav-links" id="nav-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#ourteam">Our Team</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="right-controls">
+        <button class="hamburger" id="hamburger">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="home">
+
+    <!-- Background Video -->
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="hero.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- Content -->
+    <div class="container hero-content">
+      <h1>Build Stunning Digital Experiences</h1>
+      <p>We design and develop modern, fast, and accessible websites for all users.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn primary">Get Started</a>
+        <a href="#services" class="btn secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <p class="section-text">
+        Signly is an accessibility solution designed for Deaf and mute people to facilitate communication through sign language recognition and translation.
+        Our mission is to bridge the communication gap and promote inclusivity by leveraging cutting-edge technology.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Android Application</h3>
+          <p>A mobile app version.</p>
+        </div>
+        <div class="card">
+          <h3>Prototype</h3>
+          <p>The interactive prototype.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICING ================= -->
+  <section id="ourteam" class="section">
+    <div class="container">
+      <h2 class="section-title">Our Team</h2>
+      <div class="grid pricing-grid">
+        <div class="price-card">
+          <h3>Basic</h3>
+          <p>Perfect for getting started</p>
+        </div>
+        <div class="price-card featured">
+          <h3>Pro</h3>
+          <p>Most popular choice</p>
+        </div>
+        <div class="price-card">
+          <h3>Enterprise</h3>
+          <p>For large organizations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button class="btn primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    © 2026 Signly — All rights reserved.
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
