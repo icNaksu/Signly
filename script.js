@@ -66,94 +66,113 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// ================= TEAM CAROUSEL =================
-class TeamCarousel {
+// ================= 3D DEPTH CAROUSEL =================
+class DepthCarousel {
   constructor() {
-    this.currentSlide = 0;
-    this.slides = document.querySelectorAll('.carousel-slide');
-    this.dots = document.querySelectorAll('.dot');
-    this.prevBtn = document.querySelector('.carousel-btn.prev');
-    this.nextBtn = document.querySelector('.carousel-btn.next');
-    this.track = document.querySelector('.carousel-track');
-    this.container = document.querySelector('.carousel-wrapper');
-    this.autoPlayInterval = null;
-    this.autoPlayDelay = 4000; // 4 seconds
+    this.slides = Array.from(document.querySelectorAll('.carousel-slide'));
+    this.prevBtn = document.querySelector('.depth-nav.prev');
+    this.nextBtn = document.querySelector('.depth-nav.next');
+    this.viewport = document.querySelector('.carousel-viewport');
     
-    // Touch/swipe support
+    this.currentIndex = 0;
+    this.totalSlides = this.slides.length;
+    this.autoPlayInterval = null;
+    this.autoPlayDelay = 10000; // 10 seconds
+    this.isTransitioning = false;
+    
+    // Touch support
     this.touchStartX = 0;
     this.touchEndX = 0;
+    this.touchStartY = 0;
+    this.touchEndY = 0;
     
     this.init();
   }
   
   init() {
-    // Button click events
-    this.prevBtn.addEventListener('click', () => this.prevSlide());
-    this.nextBtn.addEventListener('click', () => this.nextSlide());
+    if (this.totalSlides < 3) {
+      console.warn('Carousel needs at least 3 slides for optimal display');
+    }
     
-    // Dot click events
-    this.dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => this.goToSlide(index));
+    // Set initial positions
+    this.updateSlides();
+    
+    // Button events
+    this.prevBtn.addEventListener('click', () => this.prev());
+    this.nextBtn.addEventListener('click', () => this.next());
+    
+    // Click on side slides to navigate
+    this.slides.forEach((slide, index) => {
+      slide.addEventListener('click', () => {
+        if (slide.classList.contains('prev')) {
+          this.prev();
+        } else if (slide.classList.contains('next')) {
+          this.next();
+        }
+      });
     });
     
-    // Touch events for swipe
-    this.container.addEventListener('touchstart', (e) => {
+    // Touch/swipe support
+    this.viewport.addEventListener('touchstart', (e) => {
       this.touchStartX = e.changedTouches[0].screenX;
-    });
+      this.touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
     
-    this.container.addEventListener('touchend', (e) => {
+    this.viewport.addEventListener('touchend', (e) => {
       this.touchEndX = e.changedTouches[0].screenX;
+      this.touchEndY = e.changedTouches[0].screenY;
       this.handleSwipe();
-    });
+    }, { passive: true });
     
-    // Mouse events for desktop swipe
-    let mouseDown = false;
+    // Mouse drag support
+    let isDragging = false;
     let startX = 0;
     
-    this.container.addEventListener('mousedown', (e) => {
-      mouseDown = true;
+    this.viewport.addEventListener('mousedown', (e) => {
+      isDragging = true;
       startX = e.clientX;
-      this.container.style.cursor = 'grabbing';
+      this.viewport.style.cursor = 'grabbing';
     });
     
-    this.container.addEventListener('mouseup', (e) => {
-      if (!mouseDown) return;
-      mouseDown = false;
-      this.container.style.cursor = 'grab';
+    this.viewport.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+    });
+    
+    this.viewport.addEventListener('mouseup', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      this.viewport.style.cursor = 'default';
+      
       const endX = e.clientX;
       const diff = startX - endX;
       
-      if (Math.abs(diff) > 50) {
+      if (Math.abs(diff) > 60) {
         if (diff > 0) {
-          this.nextSlide();
+          this.next();
         } else {
-          this.prevSlide();
+          this.prev();
         }
       }
     });
     
-    this.container.addEventListener('mouseleave', () => {
-      mouseDown = false;
-      this.container.style.cursor = 'grab';
+    this.viewport.addEventListener('mouseleave', () => {
+      isDragging = false;
+      this.viewport.style.cursor = 'default';
     });
     
-    this.container.addEventListener('mouseenter', () => {
-      this.container.style.cursor = 'grab';
-    });
-    
-    // Pause on hover
-    this.container.addEventListener('mouseenter', () => {
+    // Pause auto-play on hover
+    this.viewport.addEventListener('mouseenter', () => {
       this.stopAutoPlay();
     });
     
-    this.container.addEventListener('mouseleave', () => {
+    this.viewport.addEventListener('mouseleave', () => {
       this.startAutoPlay();
     });
     
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') this.prevSlide();
-      if (e.key === 'ArrowRight') this.nextSlide();
+      if (e.key === 'ArrowLeft') this.prev();
+      if (e.key === 'ArrowRight') this.next();
     });
     
     // Start auto-play
@@ -161,54 +180,95 @@ class TeamCarousel {
   }
   
   handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = this.touchStartX - this.touchEndX;
+    const horizontalDiff = this.touchStartX - this.touchEndX;
+    const verticalDiff = Math.abs(this.touchStartY - this.touchEndY);
+    const swipeThreshold = 60;
     
-    if (Math.abs(diff) > swipeThreshold) {
-      if (diff > 0) {
-        this.nextSlide();
+    // Only trigger if horizontal swipe is dominant
+    if (Math.abs(horizontalDiff) > swipeThreshold && Math.abs(horizontalDiff) > verticalDiff) {
+      if (horizontalDiff > 0) {
+        this.next();
       } else {
-        this.prevSlide();
+        this.prev();
       }
     }
   }
   
-  goToSlide(index) {
-    // Remove active class from all
-    this.slides.forEach(slide => slide.classList.remove('active'));
-    this.dots.forEach(dot => dot.classList.remove('active'));
+  updateSlides() {
+    // Calculate positions
+    const prevIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+    const nextIndex = (this.currentIndex + 1) % this.totalSlides;
     
-    // Add active class to current
-    this.currentSlide = index;
-    this.slides[this.currentSlide].classList.add('active');
-    this.dots[this.currentSlide].classList.add('active');
+    // Remove all position classes
+    this.slides.forEach(slide => {
+      slide.classList.remove('active', 'prev', 'next', 'hidden');
+    });
     
-    // Move track
-    const translateX = -this.currentSlide * 100;
-    this.track.style.transform = `translateX(${translateX}%)`;
+    // Assign new positions
+    this.slides[this.currentIndex].classList.add('active');
+    this.slides[prevIndex].classList.add('prev');
+    this.slides[nextIndex].classList.add('next');
     
-    // Reset auto-play
+    // Hide all other slides
+    this.slides.forEach((slide, index) => {
+      if (index !== this.currentIndex && 
+          index !== prevIndex && 
+          index !== nextIndex) {
+        slide.classList.add('hidden');
+      }
+    });
+  }
+  
+  next() {
+    if (this.isTransitioning) return;
+    
+    this.isTransitioning = true;
+    this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+    this.updateSlides();
     this.resetAutoPlay();
+    
+    setTimeout(() => {
+      this.isTransitioning = false;
+    }, 800); // Match CSS transition duration
   }
   
-  nextSlide() {
-    const next = (this.currentSlide + 1) % this.slides.length;
-    this.goToSlide(next);
+  prev() {
+    if (this.isTransitioning) return;
+    
+    this.isTransitioning = true;
+    this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+    this.updateSlides();
+    this.resetAutoPlay();
+    
+    setTimeout(() => {
+      this.isTransitioning = false;
+    }, 800);
   }
   
-  prevSlide() {
-    const prev = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
-    this.goToSlide(prev);
+  goToSlide(index) {
+    if (this.isTransitioning || index === this.currentIndex) return;
+    
+    this.isTransitioning = true;
+    this.currentIndex = index;
+    this.updateSlides();
+    this.resetAutoPlay();
+    
+    setTimeout(() => {
+      this.isTransitioning = false;
+    }, 800);
   }
   
   startAutoPlay() {
     this.autoPlayInterval = setInterval(() => {
-      this.nextSlide();
+      this.next();
     }, this.autoPlayDelay);
   }
   
   stopAutoPlay() {
-    clearInterval(this.autoPlayInterval);
+    if (this.autoPlayInterval) {
+      clearInterval(this.autoPlayInterval);
+      this.autoPlayInterval = null;
+    }
   }
   
   resetAutoPlay() {
@@ -218,6 +278,6 @@ class TeamCarousel {
 }
 
 // Initialize carousel when DOM is ready
-if (document.querySelector('.carousel-container')) {
-  new TeamCarousel();
+if (document.querySelector('.depth-carousel')) {
+  new DepthCarousel();
 }
