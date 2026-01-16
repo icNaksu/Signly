@@ -88,51 +88,69 @@
     </div>
   </section>
 
-  <!-- ================= OUR TEAM (CAROUSEL) ================= -->
+  <!-- ================= OUR TEAM (3D CAROUSEL) ================= -->
   <section id="ourteam" class="section">
     <div class="container">
       <h2 class="section-title">Our Team</h2>
       
-      <div class="carousel-container">
-        <div class="carousel-wrapper">
-          <div class="carousel-track">
-            <!-- Slide 1 -->
-            <div class="carousel-slide active">
-              <img src="car1.jpg" alt="Team Photo 1">
-              <div class="slide-caption">Our Amazing Team - 2024</div>
+      <div class="depth-carousel">
+        <div class="carousel-viewport">
+          <div class="carousel-container">
+            <!-- Carousel items -->      
+            <div class="carousel-slide" data-index="1">
+              <img src="car1.jpg" alt="Team Member 2">
+              <div class="slide-info">
+                <h3>Michael Chen</h3>
+                <p>Senior Developer</p>
+              </div>
             </div>
             
-            <!-- Slide 2 -->
-            <div class="carousel-slide">
-              <img src="car2.jpg" alt="Team Photo 2">
-              <div class="slide-caption">Development Squad</div>
+            <div class="carousel-slide" data-index="2">
+              <img src="car2.jpg" alt="Team Member 3">
+              <div class="slide-info">
+                <h3>Emily Rodriguez</h3>
+                <p>Product Manager</p>
+              </div>
             </div>
             
-            <!-- Slide 3 -->
-            <div class="carousel-slide">
-              <img src="car3.jpg" alt="Team Photo 3">
-              <div class="slide-caption">Team Building Event</div>
+            <div class="carousel-slide" data-index="3">
+              <img src="car3.jpg" alt="Team Member 4">
+              <div class="slide-info">
+                <h3>David Kim</h3>
+                <p>UX Researcher</p>
+              </div>
             </div>
             
-            <!-- Slide 4 -->
-            <div class="carousel-slide">
-              <img src="car4.jpg" alt="Team Photo 4">
-              <div class="slide-caption">Project Launch Day</div>
+            <div class="carousel-slide" data-index="4">
+              <img src="car4.jpg" alt="Team Member 5">
+              <div class="slide-info">
+                <h3>Jessica Brown</h3>
+                <p>Marketing Lead</p>
+              </div>
             </div>
+
+            <div class="carousel-slide" data-index="2">
+              <img src="car5.jpg" alt="Team Member 3">
+              <div class="slide-info">
+                <h3>Emily Rodriguez</h3>
+                <p>Product Manager</p>
+              </div>
+            </div>
+
           </div>
         </div>
         
-        <!-- Navigation Arrows -->
-        <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
-        <button class="carousel-btn next" aria-label="Next slide">›</button>
-        
-        <!-- Dot Indicators -->
-        <div class="carousel-dots">
-          <span class="dot active" data-slide="0"></span>
-          <span class="dot" data-slide="1"></span>
-          <span class="dot" data-slide="2"></span>
-          <span class="dot" data-slide="3"></span>
-        </div>
+        <!-- Minimal Navigation Buttons -->
+        <button class="depth-nav prev" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="depth-nav next" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
     </div>
   </section>
