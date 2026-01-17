@@ -77,7 +77,7 @@ class DepthCarousel {
     this.currentIndex = 0;
     this.totalSlides = this.slides.length;
     this.autoPlayInterval = null;
-    this.autoPlayDelay = 10000; // 10 seconds
+    this.autoPlayDelay = 5000; // 5 seconds
     this.isTransitioning = false;
     
     // Touch support
