@@ -92,11 +92,11 @@
     <div class="container">
       <h2 class="section-title">Our Services</h2>
       <div class="grid">
-        <div class="card">
+        <div class="card clickable-card" data-gallery="android">
           <h3>Android Application</h3>
           <p>A mobile app version.</p>
         </div>
-        <div class="card">
+        <div class="card clickable-card" data-gallery="signly">
           <h3>Signly</h3>
           <p>The interactive prototype.</p>
         </div>
@@ -114,7 +114,7 @@
           <div class="carousel-container">
             <!-- Carousel items -->      
             <div class="carousel-slide" data-index="1">
-              <img src="car1.jpg" alt="Team Member 2">
+              <img src="car1.jpg" alt="Team Member 2" class="clickable-image" data-image="car1.jpg">
               <div class="slide-info">
                 <h3>Michael Chen</h3>
                 <p>Senior Developer</p>
@@ -122,7 +122,7 @@
             </div>
             
             <div class="carousel-slide" data-index="2">
-              <img src="car2.jpg" alt="Team Member 3">
+              <img src="car2.jpg" alt="Team Member 3" class="clickable-image" data-image="car2.jpg">
               <div class="slide-info">
                 <h3>Emily Rodriguez</h3>
                 <p>Product Manager</p>
@@ -130,7 +130,7 @@
             </div>
             
             <div class="carousel-slide" data-index="3">
-              <img src="car3.jpg" alt="Team Member 4">
+              <img src="car3.jpg" alt="Team Member 4" class="clickable-image" data-image="car3.jpg">
               <div class="slide-info">
                 <h3>David Kim</h3>
                 <p>UX Researcher</p>
@@ -138,7 +138,7 @@
             </div>
             
             <div class="carousel-slide" data-index="4">
-              <img src="car4.jpg" alt="Team Member 5">
+              <img src="car4.jpg" alt="Team Member 5" class="clickable-image" data-image="car4.jpg">
               <div class="slide-info">
                 <h3>Jessica Brown</h3>
                 <p>Marketing Lead</p>
@@ -146,7 +146,7 @@
             </div>
 
             <div class="carousel-slide" data-index="2">
-              <img src="car5.jpg" alt="Team Member 3">
+              <img src="car5.jpg" alt="Team Member 3" class="clickable-image" data-image="car5.jpg">
               <div class="slide-info">
                 <h3>Emily Rodriguez</h3>
                 <p>Product Manager</p>
@@ -165,6 +165,13 @@
         <button class="depth-nav next" aria-label="Next">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <!-- Close/X button - shown only in expanded state -->
+        <button class="depth-nav back" id="carousel-back" aria-label="Close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
@@ -188,6 +195,32 @@
   <footer class="footer">
     © 2026 Signly — All rights reserved.
   </footer>
+
+  <!-- ================= IMAGE LIGHTBOX MODAL ================= -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-back" id="lightbox-back" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="lightbox-content">
+      <img id="lightbox-image" src="" alt="Lightbox image">
+    </div>
+    <div class="lightbox-info">
+      <span id="lightbox-counter">1 / 1</span>
+    </div>
+  </div>
 
   <!-- JS -->
   <script src="script.js"></script>
