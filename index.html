@@ -33,10 +33,25 @@
       </nav>
 
       <div class="right-controls">
-        <button class="hamburger" id="hamburger">☰</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Hamburger Menu Overlay -->
+  <div class="menu-overlay" id="menu-overlay">
+    <nav class="menu-nav" id="menu-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#ourteam">Our Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 
   <!-- ================= HERO ================= -->
   <section class="hero" id="home">
@@ -82,7 +97,7 @@
           <p>A mobile app version.</p>
         </div>
         <div class="card">
-          <h3>Prototype</h3>
+          <h3>Signly</h3>
           <p>The interactive prototype.</p>
         </div>
       </div>
