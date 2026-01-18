@@ -711,12 +711,12 @@ body {
   }
   
   .carousel-viewport {
-    height: clamp(380px, 50vw, 450px);
+    height: clamp(350px, 40vw, 450px);
     perspective: 1300px;
   }
 
   .carousel-slide {
-    width: clamp(450px, 60vw, 550px);
+    width: clamp(280px, 55vw, 550px);
     height: clamp(280px, 40vw, 330px);
   }
 
