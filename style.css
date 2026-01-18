@@ -38,6 +38,20 @@ body {
   height: 70px;
   display: flex;
   align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* Hide full navbar on desktop when scrolled past home */
+.header.scrolled .nav-links {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.header.scrolled .logo {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 .nav {
@@ -114,14 +128,77 @@ body {
 }
 
 .hamburger {
-  font-size: 1.8rem;
   display: none;
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--dark);
   padding: 0.5rem;
-  line-height: 1;
+  position: relative;
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+/* Fixed hamburger on desktop when scrolled */
+.header.scrolled .hamburger {
+  position: fixed;
+  top: 1rem;
+  right: clamp(1rem, 4vw, 2rem);
+  display: block;
+  z-index: 1002;
+}
+
+/* Hamburger icon animation */
+.hamburger-box {
+  width: 30px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 30px;
+  height: 3px;
+  background-color: var(--dark);
+  border-radius: 3px;
+  position: absolute;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: '';
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -10px;
+}
+
+.hamburger-inner::after {
+  bottom: -10px;
+}
+
+/* Hamburger open state (X shape) */
+.hamburger.active .hamburger-inner {
+  background-color: transparent;
+}
+
+.hamburger.active .hamburger-inner::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.hamburger.active .hamburger-inner::after {
+  bottom: 0;
+  transform: rotate(-45deg);
 }
 
 /* ================= HERO (VIDEO BACKGROUND) ================= */
@@ -237,7 +314,7 @@ body {
 
 /* ================= SECTIONS ================= */
 .section {
-  padding: clamp(3rem, 8vw, 8.5rem) clamp(1rem, 4vw, 2rem);
+  padding: clamp(2.5rem, 6vw, 6rem) clamp(1rem, 4vw, 2rem);
   scroll-margin-top: 75px;
 }
 
@@ -511,27 +588,90 @@ body {
   font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
 
-/* ================= RESPONSIVE NAV ================= */
-/* Mobile mode triggered by scroll */
-.nav-links.mobile-mode,
-.nav-links.mobile-mode.active {
-  position: absolute;
-  top: 70px;
+/* ================= HAMBURGER MENU OVERLAY ================= */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 1000;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.menu-overlay.active {
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.menu-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100vh;
   background: white;
-  flex-direction: column;
-  width: 70%;
-  max-width: 260px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.nav-links.mobile-mode {
-  display: none;
-}
-
-.nav-links.mobile-mode.active {
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
+  padding: clamp(5rem, 12vw, 8rem) clamp(2rem, 5vw, 4rem);
+  gap: 1.5rem;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease 0.1s,
+              transform 0.3s ease 0.1s;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-overlay.active .menu-nav {
+  width: min(400px, 85vw);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+.menu-nav a {
+  position: relative;
+  color: var(--gray);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  padding: 0.75rem 0;
+  padding-bottom: 0.5rem;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.menu-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.menu-nav a:hover {
+  color: var(--primary-dark);
+}
+
+.menu-nav a:hover::after {
+  width: 100%;
+}
+
+.menu-nav a.active {
+  color: var(--primary-dark);
+}
+
+.menu-nav a.active::after {
+  width: 100%;
 }
 
 /* ================= TABLET AND SMALL DESKTOP ================= */
@@ -542,6 +682,25 @@ body {
   
   .logo img {
     margin-left: clamp(1rem, 5vw, 6rem);
+  }
+}
+
+/* Desktop breakpoint - show full navbar on home section */
+@media (min-width: 881px) {
+  .nav-links {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  /* Show hamburger only when scrolled past home on desktop */
+  .header.scrolled .hamburger {
+    display: block;
   }
 }
 
@@ -609,39 +768,27 @@ body {
     position: static;
   }
 
+  /* Hide full navbar on mobile/tablet - show only hamburger */
   .nav-links {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    width: 70%;
-    max-width: 280px;
-    padding: 1.5rem;
-    display: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border-radius: 0 0 12px 12px;
-    gap: 1rem;
+    display: none !important;
+    visibility: hidden !important;
   }
 
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links a {
-    padding: 0.75rem 0;
-    width: 100%;
-    text-align: left;
-    border-bottom: 1px solid #f1f1f1;
-  }
-
-  .nav-links a:last-child {
-    border-bottom: none;
-  }
-
+  /* Show hamburger by default on mobile */
   .hamburger {
     display: block !important;
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  /* Hide fixed hamburger positioning on mobile when scrolled (use normal position) */
+  .header.scrolled .hamburger {
+    position: static;
+    top: auto;
+    right: auto;
+  }
+
+  /* Menu overlay on mobile - adjust menu nav width */
+  .menu-overlay.active .menu-nav {
+    width: min(350px, 90vw);
   }
 
   .hero-buttons {
