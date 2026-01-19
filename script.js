@@ -345,15 +345,18 @@ class DepthCarousel {
   }
   
   handleSwipe() {
-    // Don't handle swipe when expanded
-    if (this.isExpanded) return;
-    
     const horizontalDiff = this.touchStartX - this.touchEndX;
     const verticalDiff = Math.abs(this.touchStartY - this.touchEndY);
-    const swipeThreshold = 60;
+    const swipeThreshold = 50;
     
     // Only trigger if horizontal swipe is dominant
     if (Math.abs(horizontalDiff) > swipeThreshold && Math.abs(horizontalDiff) > verticalDiff) {
+      // Hide hint on first swipe
+      if (this.swipeHint && !this.hintShown) {
+        this.hideSwipeHint();
+        this.hintShown = true;
+      }
+      
       if (horizontalDiff > 0) {
         this.next();
       } else {
@@ -473,6 +476,10 @@ class ImageLightbox {
     this.lastTouchDistance = 0;
     this.minScale = 1;
     this.maxScale = 5;
+    this.swipeHint = null;
+    this.hintTimeout = null;
+    this.hintShown = false;
+    this.mobileBreakpoint = 768; // Device width breakpoint for mobile/desktop
     
     // Image galleries for services
     // TODO: Replace placeholder images with your actual service images
@@ -547,6 +554,9 @@ class ImageLightbox {
       this.nextBtn.style.visibility = 'hidden';
       this.nextBtn.style.pointerEvents = 'none';
     }
+    
+    // Create swipe hint element
+    this.createSwipeHint();
     
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
@@ -719,36 +729,25 @@ class ImageLightbox {
     this.loadImage(this.currentIndex);
     this.lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
+    this.hintShown = false; // Reset hint state
     
-    // Show/hide prev/next buttons based on gallery source
+    const isMobile = window.innerWidth <= this.mobileBreakpoint;
+    
+    // Show/hide prev/next buttons based on gallery source AND device width
     if (source === 'services' && images.length > 1) {
-      // Show prev/next buttons for Services (Android/Signly)
-      if (this.prevBtn) {
-        this.prevBtn.style.display = 'flex';
-        this.prevBtn.style.visibility = 'visible';
-        this.prevBtn.style.opacity = '1';
-        this.prevBtn.style.pointerEvents = 'auto';
-      }
-      if (this.nextBtn) {
-        this.nextBtn.style.display = 'flex';
-        this.nextBtn.style.visibility = 'visible';
-        this.nextBtn.style.opacity = '1';
-        this.nextBtn.style.pointerEvents = 'auto';
+      if (isMobile) {
+        // Mobile: hide prev/next buttons, show swipe hint
+        this.hideNavigationButtons();
+        this.showSwipeHint();
+      } else {
+        // Desktop: show prev/next buttons, hide swipe hint
+        this.showNavigationButtons();
+        this.hideSwipeHint();
       }
     } else {
       // Hide prev/next buttons for Our Team (carousel) or single image
-      if (this.prevBtn) {
-        this.prevBtn.style.display = 'none';
-        this.prevBtn.style.visibility = 'hidden';
-        this.prevBtn.style.opacity = '0';
-        this.prevBtn.style.pointerEvents = 'none';
-      }
-      if (this.nextBtn) {
-        this.nextBtn.style.display = 'none';
-        this.nextBtn.style.visibility = 'hidden';
-        this.nextBtn.style.opacity = '0';
-        this.nextBtn.style.pointerEvents = 'none';
-      }
+      this.hideNavigationButtons();
+      this.hideSwipeHint();
     }
     
     // Back button is always visible
@@ -842,6 +841,73 @@ class ImageLightbox {
   
   updateImageTransform() {
     this.lightboxImage.style.transform = `scale(${this.scale}) translate(${this.translateX / this.scale}px, ${this.translateY / this.scale}px)`;
+  }
+  
+  createSwipeHint() {
+    this.swipeHint = document.createElement('div');
+    this.swipeHint.className = 'lightbox-swipe-hint';
+    this.swipeHint.textContent = 'Swipe to view more images';
+    this.lightbox.appendChild(this.swipeHint);
+  }
+  
+  showSwipeHint() {
+    if (!this.swipeHint || this.images.length <= 1) return;
+    
+    this.swipeHint.style.display = 'block';
+    this.swipeHint.style.opacity = '1';
+    
+    // Auto-hide after 4 seconds
+    if (this.hintTimeout) {
+      clearTimeout(this.hintTimeout);
+    }
+    this.hintTimeout = setTimeout(() => {
+      this.hideSwipeHint();
+      this.hintShown = true;
+    }, 4000);
+  }
+  
+  hideSwipeHint() {
+    if (!this.swipeHint) return;
+    
+    this.swipeHint.style.opacity = '0';
+    setTimeout(() => {
+      this.swipeHint.style.display = 'none';
+    }, 300);
+    
+    if (this.hintTimeout) {
+      clearTimeout(this.hintTimeout);
+      this.hintTimeout = null;
+    }
+  }
+  
+  showNavigationButtons() {
+    if (this.prevBtn) {
+      this.prevBtn.style.display = 'flex';
+      this.prevBtn.style.visibility = 'visible';
+      this.prevBtn.style.opacity = '1';
+      this.prevBtn.style.pointerEvents = 'auto';
+    }
+    if (this.nextBtn) {
+      this.nextBtn.style.display = 'flex';
+      this.nextBtn.style.visibility = 'visible';
+      this.nextBtn.style.opacity = '1';
+      this.nextBtn.style.pointerEvents = 'auto';
+    }
+  }
+  
+  hideNavigationButtons() {
+    if (this.prevBtn) {
+      this.prevBtn.style.display = 'none';
+      this.prevBtn.style.visibility = 'hidden';
+      this.prevBtn.style.opacity = '0';
+      this.prevBtn.style.pointerEvents = 'none';
+    }
+    if (this.nextBtn) {
+      this.nextBtn.style.display = 'none';
+      this.nextBtn.style.visibility = 'hidden';
+      this.nextBtn.style.opacity = '0';
+      this.nextBtn.style.pointerEvents = 'none';
+    }
   }
 }
 
