@@ -196,7 +196,12 @@ class DepthCarousel {
     });
     
     // Only active slide is clickable - expand when clicked
-    this.slides.forEach((slide, index) => {
+    // NOTE: We skip slides that contain a `.clickable-image` (Our Team),
+    // so those use only the main image lightbox and do NOT trigger a second overlay.
+    this.slides.forEach((slide) => {
+      const hasClickableImage = slide.querySelector('.clickable-image');
+      if (hasClickableImage) return;
+
       slide.addEventListener('click', (e) => {
         // Only handle clicks on active slide
         if (slide.classList.contains('active') && !this.isExpanded) {
@@ -710,6 +715,9 @@ class ImageLightbox {
     
     // Double click to zoom
     this.lightboxContent.addEventListener('dblclick', (e) => {
+      // For Services gallery, ignore double‑click so it behaves like a simple tap-only carousel
+      if (this.gallerySource === 'services') return;
+
       if (this.scale > 1) {
         this.resetZoom();
       } else {
