@@ -1,0 +1,1098 @@
+@media (max-width: 768px) {
+  .hero-video {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-video {
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.55);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+/* ================= TABLET AND SMALL DESKTOP ================= */
+@media (max-width: 1200px) {
+  .depth-carousel {
+    padding: 0 clamp(100px, 15vw, 180px);
+  }
+  
+  .logo img {
+    margin-left: clamp(1rem, 5vw, 6rem);
+  }
+}
+
+/* Desktop breakpoint - show full navbar on home section */
+@media (min-width: 881px) {
+  .nav-links {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  /* Show hamburger only when scrolled past home on desktop */
+  .header.scrolled .hamburger {
+    display: block;
+  }
+  
+  /* Expanded state on desktop */
+  .depth-carousel.expanded .carousel-slide.active {
+    width: min(88vw, 1400px);
+    height: min(82vh, 900px);
+  }
+  
+  /* Hide prev/next buttons when expanded */
+  .depth-carousel.expanded .depth-nav.prev,
+  .depth-carousel.expanded .depth-nav.next {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back {
+    top: 30px;
+    right: 30px;
+    left: auto;
+    transform: none;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back svg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:hover {
+    transform: scale(1.1);
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:active {
+    transform: scale(0.95);
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info {
+    padding: 2.5rem;
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info h3 {
+    font-size: 1.6rem;
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info p {
+    font-size: 1.1rem;
+  }
+}
+
+/* ================= LAPTOP ================= */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .depth-carousel {
+    max-width: 1400px;
+    padding: 0 clamp(120px, 12vw, 180px);
+  }
+  
+  .carousel-viewport {
+    height: clamp(380px, 40vw, 450px);
+    perspective: 1400px;
+  }
+
+  .carousel-slide {
+    width: clamp(300px, 50vw, 550px);
+    height: clamp(200px, 32vw, 320px);
+  }
+
+  .carousel-slide.active,
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: clamp(300px, 50vw, 550px);
+    height: clamp(200px, 32vw, 320px);
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(calc(-100% - clamp(1.5rem, 3vw, 3rem))) scale(0.85);
+  }
+
+  .carousel-slide.next {
+    transform: translateX(clamp(1.5rem, 3vw, 3rem)) scale(0.85);
+  }
+
+  .carousel-slide.prev:hover {
+    transform: translateX(calc(-100% - clamp(1.5rem, 3vw, 3rem))) scale(0.88);
+  }
+
+  .carousel-slide.next:hover {
+    transform: translateX(clamp(1.5rem, 3vw, 3rem)) scale(0.88);
+  }
+  
+  /* Expanded state on laptop */
+  .depth-carousel.expanded .carousel-slide.active {
+    width: min(85vw, 1200px);
+    height: min(80vh, 800px);
+  }
+  
+  /* Hide prev/next buttons when expanded */
+  .depth-carousel.expanded .depth-nav.prev,
+  .depth-carousel.expanded .depth-nav.next {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back {
+    top: 30px;
+    right: 30px;
+    left: auto;
+    transform: none;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:hover {
+    transform: scale(1.1);
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:active {
+    transform: scale(0.95);
+  }
+}
+
+/* ================= TABLET (PORTRAIT) ================= */
+@media (max-width: 1024px) {
+  .depth-carousel {
+    padding: 0 clamp(80px, 12vw, 140px);
+  }
+  
+  .carousel-viewport {
+    height: clamp(350px, 40vw, 450px);
+    perspective: 1300px;
+  }
+
+  .carousel-slide {
+    width: clamp(280px, 55vw, 550px);
+    height: clamp(280px, 40vw, 330px);
+  }
+
+  .carousel-slide.active,
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: clamp(450px, 60vw, 550px);
+    height: clamp(280px, 40vw, 330px);
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(calc(-100% - clamp(1rem, 2.5vw, 2.5rem))) scale(0.85);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.next {
+    transform: translateX(clamp(1rem, 2.5vw, 2.5rem)) scale(0.85);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.prev:hover {
+    transform: translateX(calc(-100% - clamp(1rem, 2.5vw, 2.5rem))) scale(0.88);
+    opacity: 0.7;
+  }
+
+  .carousel-slide.next:hover {
+    transform: translateX(clamp(1rem, 2.5vw, 2.5rem)) scale(0.88);
+    opacity: 0.7;
+  }
+  
+  /* Expanded state on tablet */
+  .depth-carousel.expanded .carousel-slide.active {
+    width: min(95vw, 900px);
+    height: min(85vh, 700px);
+  }
+  
+  /* Hide prev/next buttons when expanded */
+  .depth-carousel.expanded .depth-nav.prev,
+  .depth-carousel.expanded .depth-nav.next {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back {
+    top: 20px;
+    right: 20px;
+    left: auto;
+    transform: none;
+    width: 44px;
+    height: 44px;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:hover {
+    transform: scale(1.1);
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:active {
+    transform: scale(0.95);
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info {
+    padding: 1.5rem;
+  }
+}
+
+/* ================= DEFAULT RESPONSIVE FOR MOBILE/TABLET ================= */
+@media (max-width: 880px) {
+  .logo {
+    position: static;
+  }
+
+  .logo img {
+    height: clamp(60px, 12vw, 80px);
+    margin-left: 1rem;
+  }
+
+  .nav {
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .right-controls {
+    position: static;
+  }
+
+  /* Hide full navbar on mobile/tablet - show only hamburger */
+  .nav-links {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Show hamburger by default on mobile */
+  .hamburger {
+    display: block !important;
+  }
+
+  /* Hide fixed hamburger positioning on mobile when scrolled (use normal position) */
+  .header.scrolled .hamburger {
+    position: static;
+    top: auto;
+    right: auto;
+  }
+
+  /* Menu overlay on mobile - adjust menu nav width */
+  .menu-overlay.active .menu-nav {
+    width: min(350px, 90vw);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  /* Center all section content on mobile */
+  .section {
+    text-align: center;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 1.5rem;
+  }
+
+  .card {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Carousel responsive - Tablet */
+  .depth-carousel {
+    padding: 0 clamp(80px, 12vw, 150px);
+  }
+
+  .carousel-viewport {
+    height: clamp(350px, 55vw, 430px);
+    perspective: 1300px;
+  }
+
+  .carousel-slide {
+    width: clamp(420px, 65vw, 550px);
+    height: clamp(260px, 38vw, 320px);
+  }
+
+  .carousel-slide.active {
+    width: clamp(420px, 65vw, 550px);
+    height: clamp(260px, 38vw, 320px);
+    transform: translateX(-50%) scale(1);
+  }
+
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: clamp(420px, 65vw, 550px);
+    height: clamp(260px, 38vw, 320px);
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(calc(-100% - clamp(0.75rem, 1.8vw, 1.8rem))) scale(0.8);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.next {
+    transform: translateX(clamp(0.75rem, 1.8vw, 1.8rem)) scale(0.8);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.prev:hover {
+    transform: translateX(calc(-100% - clamp(0.75rem, 1.8vw, 1.8rem))) scale(0.83);
+    opacity: 0.7;
+  }
+
+  .carousel-slide.next:hover {
+    transform: translateX(clamp(0.75rem, 1.8vw, 1.8rem)) scale(0.83);
+    opacity: 0.7;
+  }
+
+  .depth-nav {
+    width: 38px;
+    height: 38px;
+  }
+
+  .depth-nav svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: clamp(60px, 10vw, 70px);
+  }
+
+  .nav-links {
+    top: clamp(60px, 10vw, 70px);
+  }
+
+  .depth-carousel {
+    padding: 0 clamp(60px, 10vw, 120px);
+  }
+
+  .carousel-viewport {
+    height: clamp(300px, 50vw, 360px);
+    perspective: 1100px;
+  }
+
+  .carousel-slide {
+    width: clamp(350px, 70vw, 460px);
+    height: clamp(210px, 38vw, 270px);
+  }
+
+  .carousel-slide.active {
+    width: clamp(350px, 70vw, 460px);
+    height: clamp(210px, 38vw, 270px);
+    transform: translateX(-50%) scale(1);
+  }
+
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: clamp(350px, 70vw, 460px);
+    height: clamp(210px, 38vw, 270px);
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(calc(-100% - clamp(0.6rem, 1.5vw, 1.2rem))) scale(0.75);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.next {
+    transform: translateX(clamp(0.6rem, 1.5vw, 1.2rem)) scale(0.75);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.prev:hover {
+    transform: translateX(calc(-100% - clamp(0.6rem, 1.5vw, 1.2rem))) scale(0.78);
+    opacity: 0.7;
+  }
+
+  .carousel-slide.next:hover {
+    transform: translateX(clamp(0.6rem, 1.5vw, 1.2rem)) scale(0.78);
+    opacity: 0.7;
+  }
+
+  .slide-info {
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .slide-info h3 {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+
+  .slide-info p {
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
+  }
+  
+  /* Expanded state on mobile/tablet */
+  .depth-carousel.expanded .carousel-slide.active {
+    width: 95vw;
+    height: min(85vh, 80vw);
+    max-width: 95vw;
+  }
+  
+  /* Hide prev/next buttons when expanded */
+  .depth-carousel.expanded .depth-nav.prev,
+  .depth-carousel.expanded .depth-nav.next {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back {
+    top: 15px;
+    right: 15px;
+    left: auto;
+    transform: none;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:hover {
+    transform: scale(1.1);
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:active {
+    transform: scale(0.95);
+  }
+  
+  .depth-carousel.expanded .depth-nav.back svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info {
+    padding: 1.5rem 1rem;
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info h3 {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info p {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: min(1200px, 95%);
+  }
+
+  .depth-carousel {
+    padding: 0 clamp(40px, 8vw, 80px);
+  }
+
+  .carousel-viewport {
+    height: clamp(250px, 48vw, 280px);
+    perspective: 900px;
+  }
+
+  .carousel-slide {
+    width: clamp(280px, 75vw, 360px);
+    height: clamp(165px, 38vw, 210px);
+  }
+
+  .carousel-slide.active {
+    width: clamp(280px, 75vw, 360px);
+    height: clamp(165px, 38vw, 210px);
+    transform: translateX(-50%) scale(1);
+  }
+
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: clamp(280px, 75vw, 360px);
+    height: clamp(165px, 38vw, 210px);
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(calc(-100% - clamp(0.5rem, 1.2vw, 0.9rem))) scale(0.7);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.next {
+    transform: translateX(clamp(0.5rem, 1.2vw, 0.9rem)) scale(0.7);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.prev:hover,
+  .carousel-slide.next:hover {
+    opacity: 0.7;
+  }
+
+  .carousel-slide.prev:hover {
+    transform: translateX(calc(-100% - clamp(0.5rem, 1.2vw, 0.9rem))) scale(0.73);
+  }
+
+  .carousel-slide.next:hover {
+    transform: translateX(clamp(0.5rem, 1.2vw, 0.9rem)) scale(0.73);
+  }
+
+  .depth-nav {
+    width: clamp(32px, 7vw, 36px);
+    height: clamp(32px, 7vw, 36px);
+  }
+
+  .depth-nav svg {
+    width: clamp(14px, 3vw, 16px);
+    height: clamp(14px, 3vw, 16px);
+  }
+
+  .depth-nav.prev {
+    left: clamp(5px, 2vw, 10px);
+  }
+
+  .depth-nav.next {
+    right: clamp(5px, 2vw, 10px);
+  }
+
+  .slide-info {
+    padding: clamp(1.2rem, 3vw, 2rem) clamp(0.8rem, 2vw, 1rem) clamp(0.8rem, 2vw, 1rem);
+  }
+
+  .slide-info h3 {
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    margin-bottom: 0.2rem;
+  }
+
+  .slide-info p {
+    font-size: clamp(0.8rem, 2vw, 0.85rem);
+  }
+  
+  /* Expanded state on small mobile */
+  .depth-carousel.expanded .carousel-slide.active {
+    width: 98vw;
+    height: min(88vh, 85vw);
+    max-width: 98vw;
+  }
+  
+  /* Hide prev/next buttons when expanded */
+  .depth-carousel.expanded .depth-nav.prev,
+  .depth-carousel.expanded .depth-nav.next {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back {
+    top: 10px;
+    right: 10px;
+    left: auto;
+    transform: none;
+    width: 36px;
+    height: 36px;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:hover {
+    transform: scale(1.1);
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:active {
+    transform: scale(0.95);
+  }
+  
+  .depth-carousel.expanded .depth-nav.back svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info {
+    padding: 1.2rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: min(1200px, 98%);
+  }
+
+  .logo img {
+    height: clamp(50px, 12vw, 70px);
+    margin-left: 0.5rem;
+  }
+
+  .nav-links {
+    width: 75%;
+    max-width: 250px;
+  }
+
+  .hero {
+    min-height: 70vh;
+    padding: clamp(3rem, 8vw, 6rem) 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    padding: 0 0.5rem;
+  }
+
+  .hero p {
+    padding: 0 0.5rem;
+  }
+
+  .hero-buttons .btn {
+    max-width: 100%;
+    padding: 0.85rem 1.5rem;
+  }
+
+  .depth-carousel {
+    padding: 0 clamp(30px, 6vw, 60px);
+  }
+
+  .carousel-viewport {
+    height: clamp(220px, 50vw, 240px);
+    perspective: 800px;
+  }
+
+  .carousel-slide {
+    width: clamp(260px, 85vw, 300px);
+    height: clamp(150px, 38vw, 175px);
+  }
+
+  .carousel-slide.active {
+    width: clamp(260px, 85vw, 300px);
+    height: clamp(150px, 38vw, 175px);
+  }
+
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: clamp(260px, 85vw, 300px);
+    height: clamp(150px, 38vw, 175px);
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(calc(-100% - clamp(0.4rem, 1vw, 0.7rem))) scale(0.65);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.next {
+    transform: translateX(clamp(0.4rem, 1vw, 0.7rem)) scale(0.65);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.prev:hover {
+    transform: translateX(calc(-100% - clamp(0.4rem, 1vw, 0.7rem))) scale(0.68);
+    opacity: 0.7;
+  }
+
+  .carousel-slide.next:hover {
+    transform: translateX(clamp(0.4rem, 1vw, 0.7rem)) scale(0.68);
+    opacity: 0.7;
+  }
+
+  .depth-nav {
+    width: clamp(30px, 7vw, 34px);
+    height: clamp(30px, 7vw, 34px);
+  }
+
+  .depth-nav svg {
+    width: clamp(12px, 3vw, 14px);
+    height: clamp(12px, 3vw, 14px);
+  }
+
+  .depth-nav.prev {
+    left: clamp(2px, 1vw, 5px);
+  }
+
+  .depth-nav.next {
+    right: clamp(2px, 1vw, 5px);
+  }
+
+  .slide-info {
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(0.6rem, 2vw, 0.8rem) clamp(0.6rem, 2vw, 0.8rem);
+  }
+
+  .slide-info h3 {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin-bottom: 0.15rem;
+  }
+
+  .slide-info p {
+    font-size: clamp(0.75rem, 2vw, 0.8rem);
+  }
+
+  .section {
+    padding: clamp(2.5rem, 7vw, 4rem) 1rem;
+  }
+}
+
+/* ================= VERY SMALL MOBILE ================= */
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: clamp(1.3rem, 6vw, 2rem);
+  }
+
+  .carousel-viewport {
+    height: clamp(200px, 50vw, 220px);
+  }
+
+  .carousel-slide,
+  .carousel-slide.active,
+  .carousel-slide.prev,
+  .carousel-slide.next {
+    width: clamp(240px, 90vw, 280px);
+    height: clamp(140px, 38vw, 165px);
+  }
+
+  .carousel-slide.prev {
+    transform: translateX(calc(-100% - clamp(0.3rem, 0.8vw, 0.5rem))) scale(0.6);
+    opacity: 0.5;
+  }
+
+  .carousel-slide.next {
+    transform: translateX(clamp(0.3rem, 0.8vw, 0.5rem)) scale(0.6);
+    opacity: 0.5;
+  }
+}
+
+/* ================= LARGE DESKTOP ================= */
+@media (min-width: 1400px) {
+  .container {
+    width: min(1400px, 90%);
+  }
+
+  .depth-carousel {
+    max-width: 1600px;
+    padding: 0 250px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    width: min(1600px, 90%);
+  }
+}
+
+/* ================= LIGHTBOX RESPONSIVE - LARGE DESKTOP (1400px+) ================= */
+@media (min-width: 1400px) {
+  .lightbox-content {
+    padding: 4rem 2rem 6rem;
+  }
+
+  .lightbox-content img {
+    max-width: 88vw;
+    max-height: 85vh;
+  }
+
+  .lightbox-back {
+    width: 50px;
+    height: 50px;
+    top: 2rem;
+    left: 2rem;
+  }
+
+  .lightbox-back svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .lightbox-nav {
+    width: 60px;
+    height: 60px;
+  }
+
+  .lightbox-nav svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .lightbox-prev {
+    left: 2rem;
+  }
+
+  .lightbox-next {
+    right: 2rem;
+  }
+
+  .lightbox-info {
+    bottom: 2.5rem;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .lightbox-zoom-hint {
+    bottom: 7rem;
+    font-size: 0.85rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* ================= LIGHTBOX RESPONSIVE - LAPTOP (1025px - 1399px) ================= */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .lightbox-content {
+    padding: clamp(4rem, 8vw, 5rem) clamp(1.5rem, 3vw, 2rem) clamp(5rem, 10vw, 7rem);
+  }
+
+  .lightbox-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+
+  .lightbox-back {
+    width: clamp(46px, 4.5vw, 50px);
+    height: clamp(46px, 4.5vw, 50px);
+    top: clamp(1.2rem, 2.5vw, 2rem);
+    left: clamp(1.2rem, 2.5vw, 2rem);
+  }
+
+  .lightbox-back svg {
+    width: clamp(20px, 2.5vw, 24px);
+    height: clamp(20px, 2.5vw, 24px);
+  }
+
+  .lightbox-nav {
+    width: clamp(48px, 5vw, 58px);
+    height: clamp(48px, 5vw, 58px);
+  }
+
+  .lightbox-nav svg {
+    width: clamp(22px, 2.8vw, 27px);
+    height: clamp(22px, 2.8vw, 27px);
+  }
+
+  .lightbox-prev {
+    left: clamp(1rem, 3.5vw, 2rem);
+  }
+
+  .lightbox-next {
+    right: clamp(1rem, 3.5vw, 2rem);
+  }
+}
+
+/* ================= LIGHTBOX RESPONSIVE - TABLET (769px - 1024px) ================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .lightbox-content {
+    padding: clamp(3.5rem, 8vw, 4.5rem) clamp(1rem, 2.5vw, 1.5rem) clamp(5rem, 10vw, 7rem);
+  }
+
+  .lightbox-content img {
+    max-width: 92vw;
+    max-height: 88vh;
+  }
+
+  .lightbox-back {
+    width: clamp(42px, 5vw, 48px);
+    height: clamp(42px, 5vw, 48px);
+    top: clamp(1rem, 2.5vw, 1.5rem);
+    left: clamp(1rem, 2.5vw, 1.5rem);
+  }
+
+  .lightbox-back svg {
+    width: clamp(18px, 2.5vw, 22px);
+    height: clamp(18px, 2.5vw, 22px);
+  }
+
+  .lightbox-nav {
+    width: clamp(44px, 5.5vw, 52px);
+    height: clamp(44px, 5.5vw, 52px);
+  }
+
+  .lightbox-nav svg {
+    width: clamp(20px, 2.8vw, 24px);
+    height: clamp(20px, 2.8vw, 24px);
+  }
+
+  .lightbox-prev {
+    left: clamp(0.75rem, 2.5vw, 1.5rem);
+  }
+
+  .lightbox-next {
+    right: clamp(0.75rem, 2.5vw, 1.5rem);
+  }
+}
+
+/* ================= LIGHTBOX RESPONSIVE - MOBILE/TABLET (481px - 768px) ================= */
+@media (max-width: 768px) {
+  .lightbox-content {
+    padding: clamp(3.5rem, 9vw, 5rem) clamp(0.75rem, 2vw, 1rem) clamp(5rem, 11vw, 7rem);
+  }
+
+  .lightbox-content img {
+    max-width: 95vw;
+    max-height: 85vh;
+  }
+
+  .lightbox-back {
+    top: clamp(0.75rem, 2vw, 1rem);
+    left: clamp(0.75rem, 2vw, 1rem);
+    width: clamp(40px, 5.5vw, 44px);
+    height: clamp(40px, 5.5vw, 44px);
+  }
+
+  .lightbox-back svg {
+    width: clamp(18px, 2.5vw, 22px);
+    height: clamp(18px, 2.5vw, 22px);
+  }
+
+  .lightbox-nav {
+    width: clamp(42px, 5.8vw, 46px);
+    height: clamp(42px, 5.8vw, 46px);
+  }
+
+  .lightbox-nav svg {
+    width: clamp(18px, 2.5vw, 22px);
+    height: clamp(18px, 2.5vw, 22px);
+  }
+
+  .lightbox-prev {
+    left: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .lightbox-next {
+    right: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .lightbox-info {
+    bottom: clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
+  }
+
+  .lightbox-zoom-hint {
+    bottom: clamp(4rem, 10vw, 6rem);
+    font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
+  }
+}
+
+/* ================= LIGHTBOX RESPONSIVE - SMALL MOBILE (max-width: 480px) ================= */
+@media (max-width: 480px) {
+  .lightbox-content {
+    padding: clamp(3rem, 8vw, 4rem) clamp(0.5rem, 1.5vw, 0.75rem) clamp(4.5rem, 10vw, 6rem);
+  }
+
+  .lightbox-content img {
+    max-width: 96vw;
+    max-height: 80vh;
+  }
+
+  .lightbox-back {
+    top: clamp(0.5rem, 1.5vw, 0.75rem);
+    left: clamp(0.5rem, 1.5vw, 0.75rem);
+    width: clamp(36px, 5vw, 40px);
+    height: clamp(36px, 5vw, 40px);
+    border-width: 1.5px;
+  }
+
+  .lightbox-back svg {
+    width: clamp(16px, 2.2vw, 20px);
+    height: clamp(16px, 2.2vw, 20px);
+  }
+
+  .lightbox-nav {
+    width: clamp(38px, 5.5vw, 42px);
+    height: clamp(38px, 5.5vw, 42px);
+    border-width: 1.5px;
+  }
+
+  .lightbox-nav svg {
+    width: clamp(16px, 2.2vw, 20px);
+    height: clamp(16px, 2.2vw, 20px);
+  }
+
+  .lightbox-prev {
+    left: clamp(0.3rem, 1.5vw, 0.6rem);
+  }
+
+  .lightbox-next {
+    right: clamp(0.3rem, 1.5vw, 0.6rem);
+  }
+
+  .lightbox-info {
+    bottom: clamp(0.75rem, 2.5vw, 1rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    padding: clamp(0.35rem, 1vw, 0.5rem) clamp(0.7rem, 2vw, 1rem);
+  }
+
+  .lightbox-zoom-hint {
+    bottom: clamp(3.5rem, 9vw, 5.5rem);
+    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+    padding: clamp(0.35rem, 1vw, 0.5rem) clamp(0.7rem, 2vw, 1rem);
+  }
+}
+
+/* ================= LIGHTBOX RESPONSIVE - VERY SMALL MOBILE (max-width: 360px) ================= */
+@media (max-width: 360px) {
+  .lightbox-content {
+    padding: clamp(2.5rem, 7vw, 3.5rem) clamp(0.4rem, 1.2vw, 0.6rem) clamp(4rem, 9vw, 5.5rem);
+  }
+
+  .lightbox-content img {
+    max-width: 98vw;
+    max-height: 75vh;
+  }
+
+  .lightbox-back {
+    top: clamp(0.4rem, 1.2vw, 0.6rem);
+    left: clamp(0.4rem, 1.2vw, 0.6rem);
+    width: clamp(34px, 5vw, 38px);
+    height: clamp(34px, 5vw, 38px);
+  }
+
+  .lightbox-back svg {
+    width: clamp(14px, 2vw, 18px);
+    height: clamp(14px, 2vw, 18px);
+  }
+
+  .lightbox-nav {
+    width: clamp(36px, 5.2vw, 40px);
+    height: clamp(36px, 5.2vw, 40px);
+  }
+
+  .lightbox-nav svg {
+    width: clamp(14px, 2vw, 18px);
+    height: clamp(14px, 2vw, 18px);
+  }
+
+  .lightbox-prev {
+    left: clamp(0.25rem, 1.2vw, 0.5rem);
+  }
+
+  .lightbox-next {
+    right: clamp(0.25rem, 1.2vw, 0.5rem);
+  }
+
+  .lightbox-info {
+    bottom: clamp(0.6rem, 2vw, 0.9rem);
+    font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+    padding: clamp(0.3rem, 0.9vw, 0.45rem) clamp(0.6rem, 1.8vw, 0.9rem);
+  }
+
+  .lightbox-zoom-hint {
+    bottom: clamp(3rem, 8vw, 5rem);
+    font-size: clamp(0.55rem, 1.1vw, 0.7rem);
+    padding: clamp(0.3rem, 0.9vw, 0.45rem) clamp(0.6rem, 1.8vw, 0.9rem);
+  }
+}
