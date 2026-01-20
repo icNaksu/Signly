@@ -1,3 +1,4 @@
+
 @media (max-width: 768px) {
   .hero-video {
     opacity: 0.3;
@@ -21,6 +22,10 @@
     background: rgba(0, 0, 0, 0.6);
   }
 }
+
+
+
+
 /* ================= TABLET AND SMALL DESKTOP ================= */
 @media (max-width: 1200px) {
   .depth-carousel {
@@ -32,8 +37,30 @@
   }
 }
 
+/* ===============================
+   DESKTOP: FIXED NAVBAR
+   =============================== */
+
+@media (max-width: 880px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  .nav {
+    position: relative;
+  }
+
+  .hamburger {
+    position: relative;
+  }
+}
+
 /* Desktop breakpoint - show full navbar on home section */
-@media (min-width: 881px) {
+@media (min-width: 880px) {
   .nav-links {
     display: flex;
     visibility: visible;
@@ -255,6 +282,11 @@
 
 /* ================= DEFAULT RESPONSIVE FOR MOBILE/TABLET ================= */
 @media (max-width: 880px) {
+
+  .header.scrolled .hamburger {
+    display: block;
+  }
+  
   .logo {
     position: static;
   }
@@ -388,6 +420,7 @@
 }
 
 @media (max-width: 768px) {
+    
   .header {
     height: clamp(60px, 10vw, 70px);
   }
