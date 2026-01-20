@@ -61,11 +61,38 @@
 
 /* Desktop breakpoint - show full navbar on home section */
 @media (min-width: 880px) {
-  .nav-links {
+
+   .header {
+    overflow: visible;       /* Prevent cropping */
+    height: auto;            /* Let it grow with logo */
+  }
+
+    .nav {
+    align-items: center;
+    height: 65px;
+  }
+
+.nav-links {
     display: flex;
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    height: 90px;
+    overflow: visible;
+  }
+
+  .logo img {
+    height: 100px;            /* Adjust as needed */
+    width: auto;
+    max-height: none;
+    max-width: none;
+    object-fit: contain;
+    display: block;
   }
 
   .hamburger {
