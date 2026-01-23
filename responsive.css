@@ -1,25 +1,73 @@
-
-@media (max-width: 768px) {
-  .hero-video {
-    opacity: 0.3;
+/* ================= VERY LARGE DESKTOP ================= */
+@media (min-width: 1920px) {
+  .container {
+    width: min(1600px, 90%);
   }
 }
 
-@media (max-width: 480px) {
-  .hero-video {
-    opacity: 0.25;
+/* ================= LARGE DESKTOP ================= */
+@media (min-width: 1400px) {
+  .container {
+    width: min(1400px, 90%);
+  }
+
+  .depth-carousel {
+    max-width: 1600px;
+    padding: 0 250px;
   }
 }
 
-@media (max-width: 768px) {
-  .hero-overlay {
-    background: rgba(0, 0, 0, 0.55);
+/* ================= LIGHTBOX RESPONSIVE - LARGE DESKTOP (1400px+) ================= */
+@media (min-width: 1400px) {
+  .lightbox-content {
+    padding: 4rem 2rem 6rem;
   }
-}
 
-@media (max-width: 480px) {
-  .hero-overlay {
-    background: rgba(0, 0, 0, 0.6);
+  .lightbox-content img {
+    max-width: 88vw;
+    max-height: 85vh;
+  }
+
+  .lightbox-back {
+    width: 50px;
+    height: 50px;
+    top: 2rem;
+    left: 2rem;
+  }
+
+  .lightbox-back svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .lightbox-nav {
+    width: 60px;
+    height: 60px;
+  }
+
+  .lightbox-nav svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .lightbox-prev {
+    left: 2rem;
+  }
+
+  .lightbox-next {
+    right: 2rem;
+  }
+
+  .lightbox-info {
+    bottom: 2.5rem;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .lightbox-zoom-hint {
+    bottom: 7rem;
+    font-size: 0.85rem;
+    padding: 0.75rem 1.5rem;
   }
 }
 
@@ -34,123 +82,47 @@
   }
 }
 
-/* ===============================
-   DESKTOP: FIXED NAVBAR
-   =============================== */
-
-@media (max-width: 880px) {
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
+/* ================= LIGHTBOX RESPONSIVE - LAPTOP (1025px - 1399px) ================= */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .lightbox-content {
+    padding: clamp(4rem, 8vw, 5rem) clamp(1.5rem, 3vw, 2rem) clamp(5rem, 10vw, 7rem);
   }
 
-  .nav {
-    position: relative;
+  .lightbox-content img {
+    max-width: 90vw;
+    max-height: 85vh;
   }
 
-  .hamburger {
-    position: relative;
+  .lightbox-back {
+    width: clamp(46px, 4.5vw, 50px);
+    height: clamp(46px, 4.5vw, 50px);
+    top: clamp(1.2rem, 2.5vw, 2rem);
+    left: clamp(1.2rem, 2.5vw, 2rem);
+  }
+
+  .lightbox-back svg {
+    width: clamp(20px, 2.5vw, 24px);
+    height: clamp(20px, 2.5vw, 24px);
+  }
+
+  .lightbox-nav {
+    width: clamp(48px, 5vw, 58px);
+    height: clamp(48px, 5vw, 58px);
+  }
+
+  .lightbox-nav svg {
+    width: clamp(22px, 2.8vw, 27px);
+    height: clamp(22px, 2.8vw, 27px);
+  }
+
+  .lightbox-prev {
+    left: clamp(1rem, 3.5vw, 2rem);
+  }
+
+  .lightbox-next {
+    right: clamp(1rem, 3.5vw, 2rem);
   }
 }
-
-/* Desktop breakpoint - show full navbar on home section */
-@media (min-width: 880px) {
-
-   .header {
-    overflow: visible;       /* Prevent cropping */
-    height: auto;            /* Let it grow with logo */
-  }
-
-    .nav {
-    align-items: center;
-    height: 65px;
-  }
-
-.nav-links {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    height: 90px;
-    overflow: visible;
-  }
-
-  .logo img {
-    height: 100px;            /* Adjust as needed */
-    width: auto;
-    max-height: none;
-    max-width: none;
-    object-fit: contain;
-    display: block;
-  }
-
-  .hamburger {
-    display: none;
-  }
-
-  /* Show hamburger only when scrolled past home on desktop */
-  .header.scrolled .hamburger {
-    display: block;
-  }
-  
-  /* Expanded state on desktop */
-  .depth-carousel.expanded .carousel-slide.active {
-    width: min(88vw, 1400px);
-    height: min(82vh, 900px);
-  }
-  
-  /* Hide prev/next buttons when expanded */
-  .depth-carousel.expanded .depth-nav.prev,
-  .depth-carousel.expanded .depth-nav.next {
-    display: none !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    visibility: hidden !important;
-  }
-  
-  .depth-carousel.expanded .depth-nav.back {
-    top: 30px;
-    right: 30px;
-    left: auto;
-    transform: none;
-    width: 50px;
-    height: 50px;
-  }
-  
-  .depth-carousel.expanded .depth-nav.back svg {
-    width: 22px;
-    height: 22px;
-  }
-  
-  .depth-carousel.expanded .depth-nav.back:hover {
-    transform: scale(1.1);
-  }
-  
-  .depth-carousel.expanded .depth-nav.back:active {
-    transform: scale(0.95);
-  }
-  
-  .depth-carousel.expanded .carousel-slide.active .slide-info {
-    padding: 2.5rem;
-  }
-  
-  .depth-carousel.expanded .carousel-slide.active .slide-info h3 {
-    font-size: 1.6rem;
-  }
-  
-  .depth-carousel.expanded .carousel-slide.active .slide-info p {
-    font-size: 1.1rem;
-  }
-}
-
 /* ================= LAPTOP ================= */
 @media (min-width: 1025px) and (max-width: 1399px) {
   .depth-carousel {
@@ -304,6 +276,123 @@
   }
 }
 
+/* ===============================
+   DESKTOP: FIXED NAVBAR
+   =============================== */
+
+@media (max-width: 880px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  .nav {
+    position: relative;
+  }
+
+  .hamburger {
+    position: relative;
+  }
+}
+
+/* Desktop breakpoint - show full navbar on home section */
+@media (min-width: 880px) {
+
+   .header {
+    overflow: visible;       /* Prevent cropping */
+    height: auto;            /* Let it grow with logo */
+  }
+
+    .nav {
+    align-items: center;
+    height: 65px;
+  }
+
+.nav-links {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    height: 90px;
+    overflow: visible;
+  }
+
+  .logo img {
+    height: 100px;            /* Adjust as needed */
+    width: auto;
+    max-height: none;
+    max-width: none;
+    object-fit: contain;
+    display: block;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  /* Show hamburger only when scrolled past home on desktop */
+  .header.scrolled .hamburger {
+    display: block;
+  }
+  
+  /* Expanded state on desktop */
+  .depth-carousel.expanded .carousel-slide.active {
+    width: min(88vw, 1400px);
+    height: min(82vh, 900px);
+  }
+  
+  /* Hide prev/next buttons when expanded */
+  .depth-carousel.expanded .depth-nav.prev,
+  .depth-carousel.expanded .depth-nav.next {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back {
+    top: 30px;
+    right: 30px;
+    left: auto;
+    transform: none;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back svg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:hover {
+    transform: scale(1.1);
+  }
+  
+  .depth-carousel.expanded .depth-nav.back:active {
+    transform: scale(0.95);
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info {
+    padding: 2.5rem;
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info h3 {
+    font-size: 1.6rem;
+  }
+  
+  .depth-carousel.expanded .carousel-slide.active .slide-info p {
+    font-size: 1.1rem;
+  }
+}
+
 /* ================= DEFAULT RESPONSIVE FOR MOBILE/TABLET ================= */
 @media (max-width: 880px) {
 
@@ -442,6 +531,114 @@
     height: 18px;
   }
 }
+
+/* ================= LIGHTBOX RESPONSIVE - TABLET (769px - 1024px) ================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .lightbox-content {
+    padding: clamp(3.5rem, 8vw, 4.5rem) clamp(1rem, 2.5vw, 1.5rem) clamp(5rem, 10vw, 7rem);
+  }
+
+  .lightbox-content img {
+    max-width: 92vw;
+    max-height: 88vh;
+  }
+
+  .lightbox-back {
+    width: clamp(42px, 5vw, 48px);
+    height: clamp(42px, 5vw, 48px);
+    top: clamp(1rem, 2.5vw, 1.5rem);
+    left: clamp(1rem, 2.5vw, 1.5rem);
+  }
+
+  .lightbox-back svg {
+    width: clamp(18px, 2.5vw, 22px);
+    height: clamp(18px, 2.5vw, 22px);
+  }
+
+  .lightbox-nav {
+    width: clamp(44px, 5.5vw, 52px);
+    height: clamp(44px, 5.5vw, 52px);
+  }
+
+  .lightbox-nav svg {
+    width: clamp(20px, 2.8vw, 24px);
+    height: clamp(20px, 2.8vw, 24px);
+  }
+
+  .lightbox-prev {
+    left: clamp(0.75rem, 2.5vw, 1.5rem);
+  }
+
+  .lightbox-next {
+    right: clamp(0.75rem, 2.5vw, 1.5rem);
+  }
+}
+@media (max-width: 768px) {
+  .hero-video {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* ================= LIGHTBOX RESPONSIVE - MOBILE/TABLET (481px - 768px) ================= */
+@media (max-width: 768px) {
+  .lightbox-content {
+    padding: clamp(3.5rem, 9vw, 5rem) clamp(0.75rem, 2vw, 1rem) clamp(5rem, 11vw, 7rem);
+  }
+
+  .lightbox-content img {
+    max-width: 95vw;
+    max-height: 85vh;
+  }
+
+  .lightbox-back {
+    top: clamp(0.75rem, 2vw, 1rem);
+    left: clamp(0.75rem, 2vw, 1rem);
+    width: clamp(40px, 5.5vw, 44px);
+    height: clamp(40px, 5.5vw, 44px);
+  }
+
+  .lightbox-back svg {
+    width: clamp(18px, 2.5vw, 22px);
+    height: clamp(18px, 2.5vw, 22px);
+  }
+
+  .lightbox-nav {
+    width: clamp(42px, 5.8vw, 46px);
+    height: clamp(42px, 5.8vw, 46px);
+  }
+
+  .lightbox-nav svg {
+    width: clamp(18px, 2.5vw, 22px);
+    height: clamp(18px, 2.5vw, 22px);
+  }
+
+  .lightbox-prev {
+    left: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .lightbox-next {
+    right: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  .lightbox-info {
+    bottom: clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
+  }
+
+  .lightbox-zoom-hint {
+    bottom: clamp(4rem, 10vw, 6rem);
+    font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
+  }
+}
+
 
 @media (max-width: 768px) {
     
@@ -690,13 +887,88 @@
   }
 }
 
+/* ================= LIGHTBOX RESPONSIVE - SMALL MOBILE (max-width: 480px) ================= */
+@media (max-width: 480px) {
+  .lightbox-content {
+    padding: clamp(3rem, 8vw, 4rem) clamp(0.5rem, 1.5vw, 0.75rem) clamp(4.5rem, 10vw, 6rem);
+  }
+
+  .lightbox-content img {
+    max-width: 96vw;
+    max-height: 80vh;
+  }
+
+  .lightbox-back {
+    top: clamp(0.5rem, 1.5vw, 0.75rem);
+    left: clamp(0.5rem, 1.5vw, 0.75rem);
+    width: clamp(36px, 5vw, 40px);
+    height: clamp(36px, 5vw, 40px);
+    border-width: 1.5px;
+  }
+
+  .lightbox-back svg {
+    width: clamp(16px, 2.2vw, 20px);
+    height: clamp(16px, 2.2vw, 20px);
+  }
+
+  .lightbox-nav {
+    width: clamp(38px, 5.5vw, 42px);
+    height: clamp(38px, 5.5vw, 42px);
+    border-width: 1.5px;
+  }
+
+  .lightbox-nav svg {
+    width: clamp(16px, 2.2vw, 20px);
+    height: clamp(16px, 2.2vw, 20px);
+  }
+
+  .lightbox-prev {
+    left: clamp(0.3rem, 1.5vw, 0.6rem);
+  }
+
+  .lightbox-next {
+    right: clamp(0.3rem, 1.5vw, 0.6rem);
+  }
+
+  .lightbox-info {
+    bottom: clamp(0.75rem, 2.5vw, 1rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    padding: clamp(0.35rem, 1vw, 0.5rem) clamp(0.7rem, 2vw, 1rem);
+  }
+
+  .lightbox-zoom-hint {
+    bottom: clamp(3.5rem, 9vw, 5.5rem);
+    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+    padding: clamp(0.35rem, 1vw, 0.5rem) clamp(0.7rem, 2vw, 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-video {
+    opacity: 0.2;
+  }
+
+  .logo img {
+    height: clamp(80px, 14vw, 80px);
+    margin-left: 1rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+
 @media (max-width: 480px) {
   .container {
     width: min(1200px, 98%);
   }
 
   .logo img {
-    height: clamp(50px, 12vw, 70px);
+    height: clamp(60px, 14vw, 80px);
     margin-left: 0.5rem;
   }
 
@@ -831,272 +1103,6 @@
   .carousel-slide.next {
     transform: translateX(clamp(0.3rem, 0.8vw, 0.5rem)) scale(0.6);
     opacity: 0.5;
-  }
-}
-
-/* ================= LARGE DESKTOP ================= */
-@media (min-width: 1400px) {
-  .container {
-    width: min(1400px, 90%);
-  }
-
-  .depth-carousel {
-    max-width: 1600px;
-    padding: 0 250px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .container {
-    width: min(1600px, 90%);
-  }
-}
-
-/* ================= LIGHTBOX RESPONSIVE - LARGE DESKTOP (1400px+) ================= */
-@media (min-width: 1400px) {
-  .lightbox-content {
-    padding: 4rem 2rem 6rem;
-  }
-
-  .lightbox-content img {
-    max-width: 88vw;
-    max-height: 85vh;
-  }
-
-  .lightbox-back {
-    width: 50px;
-    height: 50px;
-    top: 2rem;
-    left: 2rem;
-  }
-
-  .lightbox-back svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .lightbox-nav {
-    width: 60px;
-    height: 60px;
-  }
-
-  .lightbox-nav svg {
-    width: 28px;
-    height: 28px;
-  }
-
-  .lightbox-prev {
-    left: 2rem;
-  }
-
-  .lightbox-next {
-    right: 2rem;
-  }
-
-  .lightbox-info {
-    bottom: 2.5rem;
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-  }
-
-  .lightbox-zoom-hint {
-    bottom: 7rem;
-    font-size: 0.85rem;
-    padding: 0.75rem 1.5rem;
-  }
-}
-
-/* ================= LIGHTBOX RESPONSIVE - LAPTOP (1025px - 1399px) ================= */
-@media (min-width: 1025px) and (max-width: 1399px) {
-  .lightbox-content {
-    padding: clamp(4rem, 8vw, 5rem) clamp(1.5rem, 3vw, 2rem) clamp(5rem, 10vw, 7rem);
-  }
-
-  .lightbox-content img {
-    max-width: 90vw;
-    max-height: 85vh;
-  }
-
-  .lightbox-back {
-    width: clamp(46px, 4.5vw, 50px);
-    height: clamp(46px, 4.5vw, 50px);
-    top: clamp(1.2rem, 2.5vw, 2rem);
-    left: clamp(1.2rem, 2.5vw, 2rem);
-  }
-
-  .lightbox-back svg {
-    width: clamp(20px, 2.5vw, 24px);
-    height: clamp(20px, 2.5vw, 24px);
-  }
-
-  .lightbox-nav {
-    width: clamp(48px, 5vw, 58px);
-    height: clamp(48px, 5vw, 58px);
-  }
-
-  .lightbox-nav svg {
-    width: clamp(22px, 2.8vw, 27px);
-    height: clamp(22px, 2.8vw, 27px);
-  }
-
-  .lightbox-prev {
-    left: clamp(1rem, 3.5vw, 2rem);
-  }
-
-  .lightbox-next {
-    right: clamp(1rem, 3.5vw, 2rem);
-  }
-}
-
-/* ================= LIGHTBOX RESPONSIVE - TABLET (769px - 1024px) ================= */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .lightbox-content {
-    padding: clamp(3.5rem, 8vw, 4.5rem) clamp(1rem, 2.5vw, 1.5rem) clamp(5rem, 10vw, 7rem);
-  }
-
-  .lightbox-content img {
-    max-width: 92vw;
-    max-height: 88vh;
-  }
-
-  .lightbox-back {
-    width: clamp(42px, 5vw, 48px);
-    height: clamp(42px, 5vw, 48px);
-    top: clamp(1rem, 2.5vw, 1.5rem);
-    left: clamp(1rem, 2.5vw, 1.5rem);
-  }
-
-  .lightbox-back svg {
-    width: clamp(18px, 2.5vw, 22px);
-    height: clamp(18px, 2.5vw, 22px);
-  }
-
-  .lightbox-nav {
-    width: clamp(44px, 5.5vw, 52px);
-    height: clamp(44px, 5.5vw, 52px);
-  }
-
-  .lightbox-nav svg {
-    width: clamp(20px, 2.8vw, 24px);
-    height: clamp(20px, 2.8vw, 24px);
-  }
-
-  .lightbox-prev {
-    left: clamp(0.75rem, 2.5vw, 1.5rem);
-  }
-
-  .lightbox-next {
-    right: clamp(0.75rem, 2.5vw, 1.5rem);
-  }
-}
-
-/* ================= LIGHTBOX RESPONSIVE - MOBILE/TABLET (481px - 768px) ================= */
-@media (max-width: 768px) {
-  .lightbox-content {
-    padding: clamp(3.5rem, 9vw, 5rem) clamp(0.75rem, 2vw, 1rem) clamp(5rem, 11vw, 7rem);
-  }
-
-  .lightbox-content img {
-    max-width: 95vw;
-    max-height: 85vh;
-  }
-
-  .lightbox-back {
-    top: clamp(0.75rem, 2vw, 1rem);
-    left: clamp(0.75rem, 2vw, 1rem);
-    width: clamp(40px, 5.5vw, 44px);
-    height: clamp(40px, 5.5vw, 44px);
-  }
-
-  .lightbox-back svg {
-    width: clamp(18px, 2.5vw, 22px);
-    height: clamp(18px, 2.5vw, 22px);
-  }
-
-  .lightbox-nav {
-    width: clamp(42px, 5.8vw, 46px);
-    height: clamp(42px, 5.8vw, 46px);
-  }
-
-  .lightbox-nav svg {
-    width: clamp(18px, 2.5vw, 22px);
-    height: clamp(18px, 2.5vw, 22px);
-  }
-
-  .lightbox-prev {
-    left: clamp(0.5rem, 2vw, 1rem);
-  }
-
-  .lightbox-next {
-    right: clamp(0.5rem, 2vw, 1rem);
-  }
-
-  .lightbox-info {
-    bottom: clamp(1rem, 3vw, 1.5rem);
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
-    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
-  }
-
-  .lightbox-zoom-hint {
-    bottom: clamp(4rem, 10vw, 6rem);
-    font-size: clamp(0.65rem, 1.3vw, 0.8rem);
-    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.2rem);
-  }
-}
-
-/* ================= LIGHTBOX RESPONSIVE - SMALL MOBILE (max-width: 480px) ================= */
-@media (max-width: 480px) {
-  .lightbox-content {
-    padding: clamp(3rem, 8vw, 4rem) clamp(0.5rem, 1.5vw, 0.75rem) clamp(4.5rem, 10vw, 6rem);
-  }
-
-  .lightbox-content img {
-    max-width: 96vw;
-    max-height: 80vh;
-  }
-
-  .lightbox-back {
-    top: clamp(0.5rem, 1.5vw, 0.75rem);
-    left: clamp(0.5rem, 1.5vw, 0.75rem);
-    width: clamp(36px, 5vw, 40px);
-    height: clamp(36px, 5vw, 40px);
-    border-width: 1.5px;
-  }
-
-  .lightbox-back svg {
-    width: clamp(16px, 2.2vw, 20px);
-    height: clamp(16px, 2.2vw, 20px);
-  }
-
-  .lightbox-nav {
-    width: clamp(38px, 5.5vw, 42px);
-    height: clamp(38px, 5.5vw, 42px);
-    border-width: 1.5px;
-  }
-
-  .lightbox-nav svg {
-    width: clamp(16px, 2.2vw, 20px);
-    height: clamp(16px, 2.2vw, 20px);
-  }
-
-  .lightbox-prev {
-    left: clamp(0.3rem, 1.5vw, 0.6rem);
-  }
-
-  .lightbox-next {
-    right: clamp(0.3rem, 1.5vw, 0.6rem);
-  }
-
-  .lightbox-info {
-    bottom: clamp(0.75rem, 2.5vw, 1rem);
-    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-    padding: clamp(0.35rem, 1vw, 0.5rem) clamp(0.7rem, 2vw, 1rem);
-  }
-
-  .lightbox-zoom-hint {
-    bottom: clamp(3.5rem, 9vw, 5.5rem);
-    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
-    padding: clamp(0.35rem, 1vw, 0.5rem) clamp(0.7rem, 2vw, 1rem);
   }
 }
 
