@@ -486,20 +486,19 @@ class ImageLightbox {
     this.hintShown = false;
     this.mobileBreakpoint = 768; // Device width breakpoint for mobile/desktop
     
-    // Image galleries for services
-    // TODO: Replace placeholder images with your actual service images
-    // Place images in the same directory as index.html and update the paths below
+    // Image galleries for services - GitHub Pages compatible paths
+    // Using relative paths that work both locally and on GitHub Pages
     this.imageGalleries = {
       android: [
-        // Add your Android application images here (e.g., 'android1.jpg', 'android2.jpg', 'android3.jpg')
-        // Currently using placeholder images - replace with actual Android app screenshots
-        'app1.jpg','app2.jpg','app3.jpg','app4.jpg','app5.jpg','app6.jpg','app7.jpg','app8.jpg','app9.jpg','app21.jpg','app22.jpg','app23.jpg',
-        'app24.jpg','app25.jpg'
+        // Android application images - ensure these files exist in your repository
+        './app1.jpg', './app2.jpg', './app3.jpg', './app4.jpg', './app5.jpg',
+        './app6.jpg', './app7.jpg', './app8.jpg', './app9.jpg', './app10.jpg',
+        './app11.jpg', './app12.jpg', './app13.jpg', './app14.jpg', './app15.jpg',
+        './app16.jpg', './app17.jpg', './app18.jpg'
       ],
       signly: [
-        // Add your Signly prototype images here (e.g., 'signly1.jpg', 'signly2.jpg', 'signly3.jpg')
-        // Currently using placeholder images - replace with actual Signly prototype screenshots
-        'signly1.jpg','signly2.jpg','signly3.jpg'
+        // Signly prototype images - ensure these files exist in your repository
+        './signly1.jpg', './signly2.jpg', './signly3.jpg'
       ]
     };
     
@@ -773,15 +772,53 @@ class ImageLightbox {
     
     this.currentIndex = index;
     const img = new Image();
-    img.src = this.images[index];
+    
+    // GitHub Pages and Android compatibility fixes
+    img.crossOrigin = 'anonymous'; // Handle CORS issues on GitHub Pages
+    img.decoding = 'async'; // Improve loading performance
+    img.loading = 'eager'; // Ensure immediate loading
+    
+    // Add cache busting for GitHub Pages and Android
+    const timestamp = new Date().getTime();
+    const src = this.images[index];
+    const separator = src.includes('?') ? '&' : '?';
+    img.src = `${src}${separator}t=${timestamp}`;
+    
+    // Set proper image attributes for Android
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
+    img.style.objectFit = 'contain';
+    img.style.objectPosition = 'center';
     
     img.onload = () => {
-      this.lightboxImage.src = this.images[index];
+      // Android-specific rendering fix
+      this.lightboxImage.src = img.src;
+      this.lightboxImage.style.display = 'block';
+      
+      // Force reflow to ensure proper rendering on Android
+      this.lightboxImage.offsetHeight;
+      
       this.updateCounter();
+      
+      // Additional Android rendering fix
+      if (navigator.userAgent.includes('Android')) {
+        // Trigger a small CSS change to force repaint
+        this.lightboxImage.style.transform = 'translateZ(0)';
+        setTimeout(() => {
+          this.lightboxImage.style.transform = '';
+        }, 10);
+      }
     };
     
     img.onerror = () => {
       console.error(`Failed to load image: ${this.images[index]}`);
+      // Try loading without cache busting as fallback
+      const fallbackImg = new Image();
+      fallbackImg.src = this.images[index];
+      fallbackImg.onload = () => {
+        this.lightboxImage.src = this.images[index];
+        this.updateCounter();
+      };
     };
   }
   
