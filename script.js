@@ -496,7 +496,7 @@ class ImageLightbox {
       ],
       signly: [
         // Signly prototype images - ensure these files exist in your repository
-        './signly1.jpg', './signly2.jpg'
+        './signly1.jpg', './signly2.jpg', './signly3.jpg'
       ]
     };
     
