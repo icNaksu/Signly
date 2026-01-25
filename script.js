@@ -500,7 +500,7 @@ class ImageLightbox {
       signly: [
         // Add your Signly prototype images here (e.g., 'signly1.jpg', 'signly2.jpg', 'signly3.jpg')
         // Currently using placeholder images - replace with actual Signly prototype screenshots
-        'car5.jpg','car1.jpg'
+        'our1.jpg','our2.jpg','our3.jpg','our4.jpg','our5.jpg'
       ]
     };
     
