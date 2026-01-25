@@ -493,7 +493,9 @@ class ImageLightbox {
       android: [
         // Add your Android application images here (e.g., 'android1.jpg', 'android2.jpg', 'android3.jpg')
         // Currently using placeholder images - replace with actual Android app screenshots
-        'app1.jpg', 'app2.jpg', 'app3.jpg', 'app4.jpg', 'app5.jpg','app6.jpg', 'app7.jpg', 'app8.jpg', 'app9.jpg'
+        'app1.jpg', 'app2.jpg', 'app3.jpg', 'app4.jpg', 'app5.jpg','app6.jpg', 'app7.jpg', 'app8.jpg', 'app9.jpg', 'app10.jpg'
+        ,'app11.jpg', 'app12.jpg', 'app13.jpg', 'app14.jpg', 'app15.jpg',
+        'app16.jpg', 'app17.jpg', 'app18.jpg'
       ],
       signly: [
         // Add your Signly prototype images here (e.g., 'signly1.jpg', 'signly2.jpg', 'signly3.jpg')
