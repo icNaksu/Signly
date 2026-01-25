@@ -492,9 +492,7 @@ class ImageLightbox {
       android: [
         // Android application images - ensure these files exist in your repository
         './app1.jpg', './app2.jpg', './app3.jpg', './app4.jpg', './app5.jpg',
-        './app6.jpg', './app7.jpg', './app8.jpg', './app9.jpg', './app10.jpg',
-        './app11.jpg', './app12.jpg', './app13.jpg', './app14.jpg', './app15.jpg',
-        './app16.jpg', './app17.jpg', './app18.jpg'
+        './app6.jpg', './app7.jpg', './app8.jpg', './app9.jpg'
       ],
       signly: [
         // Signly prototype images - ensure these files exist in your repository
