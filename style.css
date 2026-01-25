@@ -252,7 +252,7 @@ body::-webkit-scrollbar-button,
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.35;
+  opacity: 0.45;
   z-index: -2;
 }
 
@@ -928,11 +928,19 @@ body::-webkit-scrollbar-button,
   transition: opacity 0.3s ease;
   overflow: hidden;
   user-select: none;
+  /* Android-specific fixes */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .lightbox.active {
   display: flex;
   opacity: 1;
+  /* Force hardware acceleration for Android */
+  transform: translateZ(0);
 }
 
 .lightbox-content {
@@ -945,6 +953,11 @@ body::-webkit-scrollbar-button,
   overflow: hidden;
   padding: 4rem clamp(1rem, 4vw, 2rem) clamp(5rem, 10vw, 8rem);
   cursor: grab;
+  /* Android-specific fixes */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .lightbox-content:active {
@@ -961,6 +974,14 @@ body::-webkit-scrollbar-button,
   user-select: none;
   -webkit-user-drag: none;
   pointer-events: none;
+  /* Android-specific fixes */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
 }
 
 /* Back button */
